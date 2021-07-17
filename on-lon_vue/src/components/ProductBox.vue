@@ -1,7 +1,7 @@
 <template>
     <div class="column is-3">
         <div class="box">
-            <figure class="image mb-4">
+            <figure class="image mb-3 is-4by3">
                 <img v-bind:src="product.get_thumbnail" alt="product preview">
             </figure>
 

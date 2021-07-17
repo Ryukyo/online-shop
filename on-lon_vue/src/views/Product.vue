@@ -2,7 +2,7 @@
     <div class="page-product">
         <div class="columns is-multiline">
             <div class="column is-9">
-                <figure class="image mb-6">
+                <figure class="image mb-6 is-2by1">
                     <img v-bind:src="product.get_image" alt="product">
                 </figure>
 
@@ -14,7 +14,7 @@
             <div class="column is-3">
                 <h2 class="subtitle">Information</h2>
 
-                <p><strong>Price: </strong>${{ product.price }}</p>
+                <p><strong>Price: </strong>€{{ product.price }}</p>
 
                 <div class="field has-addons mt-6">
                     <div class="control">
@@ -32,7 +32,7 @@
 
 <script>
 import axios from 'axios'
-
+import { toast } from 'bulma-toast'
 export default {
     name: 'Product',
     data() {
@@ -53,7 +53,7 @@ export default {
                 .get(`/api/v1/products/${category_slug}/${product_slug}`)
                 .then(response => {
                     this.product = response.data
-                    document.title = this.product.name + ' | Djackets'
+                    document.title = this.product.name + ' | On-Lon'
                 })
                 .catch(error => {
                     console.log(error)
@@ -61,7 +61,24 @@ export default {
             
             this.$store.commit('setIsLoading', false)
         },
-
+        addToCart() {
+            if (isNaN(this.quantity) || this.quantity < 1) {
+                this.quantity = 1
+            }
+            const item = {
+                product: this.product,
+                quantity: this.quantity
+            }
+            this.$store.commit('addToCart', item)
+            toast({
+                message: 'Article was added to the cart',
+                type: 'is-success',
+                dismissible: true,
+                pauseOnHover: true,
+                duration: 2000,
+                position: 'bottom-right',
+            })
+        }
     }
 }
 </script>
