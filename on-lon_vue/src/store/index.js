@@ -47,9 +47,9 @@ export default createStore({
       state.isAuthenticated = false;
     },
     clearCart(state) {
-      state.cart = { items: []}
+      state.cart = { items: [] }
       localStorage.setItem('cart', JSON.stringify(state.cart))
-    }
+    },
   },
   actions: {},
   modules: {},
