@@ -1,4 +1,4 @@
-<img src="sample-images/sample_main.png" width="50>
+<img src="sample-images/sample_main.png" width="75">
 
 # On-Lon
 
