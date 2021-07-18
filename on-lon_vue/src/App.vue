@@ -35,7 +35,7 @@
 
         <div class="navbar-end">
           <router-link to="/drones" class="navbar-item">Drones</router-link>
-          <router-link to="/accessoires" class="navbar-item">Accessories</router-link>
+          <router-link to="/accessories" class="navbar-item">Accessories</router-link>
 
           <div class="navbar-item">
             <div class="buttons">
